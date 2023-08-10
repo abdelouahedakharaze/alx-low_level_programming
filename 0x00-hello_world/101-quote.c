@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 /**
  * main - Entry point
  *
@@ -6,7 +7,6 @@
  */
 int main(void)
 {
-const char msg[] = "\"and that piece of art is useful\" - Dora Korpar, 2015-10-19\n"; 
-syscall(SYS_write, 1, msg, sizeof(msg));
+write(2, "and that piece of art is useful\" - Dora Korpar, 2015-10-19", 58);
 return (1);
 }
