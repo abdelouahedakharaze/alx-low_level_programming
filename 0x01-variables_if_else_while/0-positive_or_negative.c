@@ -5,27 +5,25 @@
 /* more headers goes there */
 /**
  * main - Determines if a number is positive, negative or zero.
- * this program print a message depending of the sign of the n number 
+ * this program print a message depending of the sign of the n number.
  * Return: Always 0 (Success)
  */
 int main(void)
 {
-        int n;
-
-
-        srand(time(0));
-        n = rand() - RAND_MAX / 2;
-        if (n > 0)
-        {
-                printf("%d is positive\n", n);
-        }
-        else if (n == 0)
-        {
-                printf("%d is zero\n", n);
-        }
-        else
-        {
-                printf("%d is negative\n", n);
-        }
-        return (0);
+int n;
+srand(time(0));
+n = rand() - RAND_MAX / 2;
+if (n > 0)
+{
+printf("%d is positive\n", n);
+}
+else if (n == 0)
+{
+printf("%d is zero\n", n);
+}
+else
+{
+printf("%d is negative\n", n);
+}
+return (0);
 }
