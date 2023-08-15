@@ -4,7 +4,7 @@
  * times_table - prints mult tables .
  * of numbers from 0 to 9.
  * @number1 , @number2:multiplied numbers.
- * @number3:the product.
+ * number3:the product.
  */
 void times_table(void)
 {
