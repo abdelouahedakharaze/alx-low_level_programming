@@ -6,7 +6,7 @@
  * Return: number if greater or equal to 0
  *   -number if not
  */
-int _abs(int number);
+int _abs(int number)
 {
 	if (number >= 0)
 		return (number);
