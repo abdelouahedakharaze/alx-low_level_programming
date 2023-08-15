@@ -10,7 +10,9 @@ void print_alphabet_x10(void)
 	int counter = 0;
 
 	while (counter++ <= 9)
+	{
 		for (harf = 'a'; harf <= 'z'; harf++)
 			_putchar(harf);
 		_putchar('\n');
+	}
 }
