@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include <stdio.h>
 /**
  * _isupper - see if a char is upper.
  *Return: 1 if upper 0 if not
