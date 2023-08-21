@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stddef.h>
 /**
  * _strlen - Returns len of a string.
  * @str: the parameter as string.
