@@ -1,8 +1,7 @@
 #include <stdio.h>
-
 /**
- * main - Prints the sum of even-valued 
- *terms not exceeding 4000000.
+ * main - Prints the sum of even-valued.
+ * *terms not exceeding 4000000.
  * Return: Always 0.
  */
 int main(void)
