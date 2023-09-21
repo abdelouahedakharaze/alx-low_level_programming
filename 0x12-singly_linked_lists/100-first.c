@@ -1,6 +1,6 @@
 #include "lists.h"
 /**
- * __constructor - runs before main
+ * before_every_one - runs before main
  * Return: void
 */
 
