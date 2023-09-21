@@ -1,18 +1,11 @@
-extern printf
-
-section .text
-
-global main
+section			.text
+		extern	printf
+		global	main
 
 main:
-    push rbp
-    mov rbp, rsp
+		mov				edi, msg
+		mov				eax, 0
+		call	printf
 
-    mov rdi, msg
-    call printf
-
-    leave
-    ret
-
-section .data
-    msg     db  'Hello, Holberton', 16, 10, 0
+section			.data
+		msg db 'Hello, Holberton', 0xa, 0
