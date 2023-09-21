@@ -1,0 +1,1 @@
+single linked lists in c are easy , 
