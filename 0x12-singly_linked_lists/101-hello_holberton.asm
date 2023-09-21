@@ -1,16 +1,18 @@
-section .data
-    msg db "Hello, Holberton",10      ; 
+extern printf
 
 section .text
-    global _start
 
-_start:
-    mov rax, 1
-    mov rdi, 1
-    mov rsi, msg
-    mov rdx, 13
-    syscall
-    
-    mov rax, 60
-    mov rdi, 0
-    syscall
+global main
+
+main:
+    push rbp
+    mov rbp, rsp
+
+    mov rdi, msg
+    call printf
+
+    leave
+    ret
+
+section .data
+    msg     db  'Hello, Holberton', 16, 10, 0
