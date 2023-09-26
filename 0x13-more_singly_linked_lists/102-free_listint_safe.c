@@ -1,48 +1,44 @@
 #include "lists.h"
 
 /**
- * loop_listint_len - calculates the length of a loop in a linked list
- * @head: pointer to the head of the linked list
- *
- * Return: the number of nodes in the loop, or 0 if there is no loop
+ * helper_func - calculates the tool of a loop in a linked list
+ * @head: the head of the linked list
+ * Return: the number of nodes in the loop
  */
-size_t loop_listint_len(const listint_t *head)
+size_t helper_func(const listint_t *head)
 {
-	const listint_t *slow_ptr, *fast_ptr;
-	size_t length = 1;
+	const listint_t *turtle, *rabbit;
+	size_t tool = 1;
 
-	/* If the list is empty or has only one node, there is no loop */
 	if (head == NULL || head->next == NULL)
 		return (0);
 
-	slow_ptr = head->next;  /* tortoise pointer */
-	fast_ptr = head->next->next;  /* hare pointer */
-
-	/* Floyd's cycle-finding algorithm */
-	while (fast_ptr != NULL)
+	turtle = head->next;
+	rabbit = head->next->next;
+	while (rabbit != NULL)
 	{
-		if (slow_ptr == fast_ptr)
+		if (turtle == rabbit)
 		{
-			slow_ptr = head;
-			while (slow_ptr != fast_ptr)
+			turtle = head;
+			while (turtle != rabbit)
 			{
-				length++;
-				slow_ptr = slow_ptr->next;
-				fast_ptr = fast_ptr->next;
+				tool++;
+				turtle = turtle->next;
+				rabbit = rabbit->next;
 			}
 
-			slow_ptr = slow_ptr->next;
-			while (slow_ptr != fast_ptr)
+			turtle = turtle->next;
+			while (turtle != rabbit)
 			{
-				length++;
-				slow_ptr = slow_ptr->next;
+				tool++;
+				turtle = turtle->next;
 			}
 
-			return (length);
+			return (tool);
 		}
 
-		slow_ptr = slow_ptr->next;
-		fast_ptr = fast_ptr->next->next;
+		turtle = turtle->next;
+		rabbit = rabbit->next->next;
 	}
 
 	return (0);
@@ -56,11 +52,11 @@ size_t loop_listint_len(const listint_t *head)
 size_t free_listint_safe(listint_t **h)
 {
 	listint_t *tmp;
-	size_t length, i;
+	size_t tool, i;
 
-	length = loop_listint_len(*h);
+	tool = helper_func(*h);
 
-	if (length == 0)
+	if (tool == 0)
 	{
 		for (i = 0; *h != NULL; i++)
 		{
@@ -71,7 +67,7 @@ size_t free_listint_safe(listint_t **h)
 	}
 	else
 	{
-		for (i = 0; i < length; i++)
+		for (i = 0; i < tool; i++)
 		{
 			tmp = *h;
 			*h = (*h)->next;
