@@ -14,7 +14,6 @@ int main(int argc, char *argv[])
 	if (argc != 3)
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n"), exit(97);
 
-	/* open file_from */
 	origins = open(argv[1], O_RDONLY);
 	if (origins == -1)
 	{
@@ -22,12 +21,10 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 
-	/* open file_to */
 	arrival = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (arrival == -1)
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]), exit(99);
 
-	/* read from file_from and write to file_to */
 	while ((eyess = read(origins, buf, 1024)) > 0)
 	{
 		hands = write(arrival, buf, eyess);
