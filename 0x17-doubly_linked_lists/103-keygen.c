@@ -3,104 +3,125 @@
 #include <time.h>
 
 /**
- * findLargestChar - Finds the biggest character in the username
- * @username: the username
- * @length: length of the username
+ * f4 - finds the biggest number
  *
- * Return: the biggest character's processed value
+ * @usrn: username
+ * @len: length of username
+ * Return: the biggest number
  */
-int findLargestChar(char *username, int length) {
-    int maxChar = *username;
-    int index = 0;
+int f4(char *usrn, int len)
+{
+	int ch;
+	int vch;
+	unsigned int rand_num;
 
-    // Finding the largest character in the username
-    while (index < length) {
-        if (maxChar < username[index])
-            maxChar = username[index];
-        index += 1;
-    }
+	ch = *usrn;
+	vch = 0;
 
-    srand(maxChar ^ 14); // Seed random number generator
-    return (rand() & 63); // Process the random number
+	while (vch < len)
+	{
+		if (ch < usrn[vch])
+			ch = usrn[vch];
+		vch += 1;
+	}
+
+	srand(ch ^ 14);
+	rand_num = rand();
+
+	return (rand_num & 63);
 }
 
 /**
- * multiplyChars - Multiplies each character of the username
- * @username: the username
- * @length: length of the username
+ * f5 - multiplies each char of username
  *
- * Return: processed value from character multiplication
+ * @usrn: username
+ * @len: length of username
+ * Return: multiplied char
  */
-int multiplyChars(char *username, int length) {
-    int total = 0;
-    int index = 0;
+int f5(char *usrn, int len)
+{
+	int ch;
+	int vch;
 
-    // Multiplying each character of the username
-    while (index < length) {
-        total = total + username[index] * username[index];
-        index += 1;
-    }
+	ch = vch = 0;
 
-    return (((unsigned int)total ^ 239) & 63); // Process the total value
+	while (vch < len)
+	{
+		ch = ch + usrn[vch] * usrn[vch];
+		vch += 1;
+	}
+
+	return (((unsigned int)ch ^ 239) & 63);
 }
 
 /**
- * generateRandomChar - Generates a random character based on username
- * @username: the username
+ * f6 - generates a random char
  *
- * Return: processed value of the random character
+ * @usrn: username
+ * Return: a random char
  */
-int generateRandomChar(char *username) {
-    int randChar = 0;
-    int index = 0;
+int f6(char *usrn)
+{
+	int ch;
+	int vch;
 
-    // Generate a random character based on the username
-    while (index < *username) {
-        randChar = rand();
-        index += 1;
-    }
+	ch = vch = 0;
 
-    return (((unsigned int)randChar ^ 229) & 63); // Process the random character value
+	while (vch < *usrn)
+	{
+		ch = rand();
+		vch += 1;
+	}
+
+	return (((unsigned int)ch ^ 229) & 63);
 }
 
 /**
  * main - Entry point
+ *
  * @argc: arguments count
  * @argv: arguments vector
- *
  * Return: Always 0
  */
-int main(int argc, char **argv) {
-    char generatedKey[7];
-    int length, sum, product, i;
-    long hexValues[] = {
-        0x3877445248432d41, 0x42394530534e6c37, 0x4d6e706762695432,
-        0x74767a5835737956, 0x2b554c59634a474f, 0x71786636576a6d34,
-        0x723161513346655a, 0x6b756f494b646850
-    };
-    (void)argc;
+int main(int argc, char **argv)
+{
+	char keygen[7];
+	int len, ch, vch;
+	long alph[] = {
+		0x3877445248432d41, 0x42394530534e6c37, 0x4d6e706762695432,
+		0x74767a5835737956, 0x2b554c59634a474f, 0x71786636576a6d34,
+		0x723161513346655a, 0x6b756f494b646850 };
+	(void) argc;
 
-    // Calculate the length of the input username
-    for (length = 0; argv[1][length]; length++);
-
-    generatedKey[0] = ((char *)hexValues)[(length ^ 59) & 63];
-
-    sum = product = 0;
-    for (i = 0; i < length; i++) {
-        sum = sum + argv[1][i];
-        product = argv[1][i] * product;
-    }
-
-    generatedKey[1] = ((char *)hexValues)[(sum ^ 79) & 63];
-    generatedKey[2] = ((char *)hexValues)[(product ^ 85) & 63];
-    generatedKey[3] = ((char *)hexValues)[findLargestChar(argv[1], length)];
-    generatedKey[4] = ((char *)hexValues)[multiplyChars(argv[1], length)];
-    generatedKey[5] = ((char *)hexValues)[generateRandomChar(argv[1)];
-    generatedKey[6] = '\0';
-
-    // Print the generated key
-    for (i = 0; generatedKey[i]; i++) {
-        printf("%c", generatedKey[i]);
-    }
-    return 0;
+	for (len = 0; argv[1][len]; len++)
+		;
+	/* ----------- f1 ----------- */
+	keygen[0] = ((char *)alph)[(len ^ 59) & 63];
+	/* ----------- f2 ----------- */
+	ch = vch = 0;
+	while (vch < len)
+	{
+		ch = ch + argv[1][vch];
+		vch = vch + 1;
+	}
+	keygen[1] = ((char *)alph)[(ch ^ 79) & 63];
+	/* ----------- f3 ----------- */
+	ch = 1;
+	vch = 0;
+	while (vch < len)
+	{
+		ch = argv[1][vch] * ch;
+		vch = vch + 1;
+	}
+	keygen[2] = ((char *)alph)[(ch ^ 85) & 63];
+	/* ----------- f4 ----------- */
+	keygen[3] = ((char *)alph)[f4(argv[1], len)];
+	/* ----------- f5 ----------- */
+	keygen[4] = ((char *)alph)[f5(argv[1], len)];
+	/* ----------- f6 ----------- */
+	keygen[5] = ((char *)alph)[f6(argv[1])];
+	keygen[6] = '\0';
+	for (ch = 0; keygen[ch]; ch++)
+		printf("%c", keygen[ch]);
+	return (0);
 }
