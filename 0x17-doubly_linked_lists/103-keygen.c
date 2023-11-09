@@ -1,11 +1,10 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-
 /**
- * main - generate a key depending on a username for crackme5
- * @argc: number of arguments passed
- * @argv: arguments passed to main
+ * main - crack of crackme5
+ * @argc: arguments passed
+ * @argv: arguments of main
  *
  * Return: 0 on success, 1 on error
  */
