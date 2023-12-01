@@ -1,12 +1,12 @@
 #include "hash_tables.h"
 /**
- * hash_table_set - adds an element to the hash table.
- * @ht: hash table
- * @key: is the key. key can not be an empty string
- * @value: value associated with the key.
- * value must be duplicated. value can be an empty string
- * Return: 1 on success, 0 on failurre
+ * hash_table_set - Adds an element to the hash table.
+ * @ht: The hash table.
+ * @key: The key (cannot be an empty string).
+ * @value: The value associated with the key (must be duplicated)
+ * Return: 1 on success, 0 on failure.
  */
+
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 
@@ -30,7 +30,6 @@ if (node == NULL)
 	return (1);
 }
 
-/*If key exists, replace value*/
 while (node != NULL)
 {
 	if (strcmp(key, node->key) == 0)
@@ -41,7 +40,6 @@ while (node != NULL)
 	}
 	node = node->next;
 }
-/*If key doesn't exist, create new node*/
 new_node = create_new_node(key, value);
 if (new_node == NULL)
 	return (0);
@@ -52,12 +50,12 @@ return (1);
 }
 
 /**
- * create_new_node - create a new node
- * @key: is the key. key can not be an empty string
- * @value: value associated with the key.
- * value must be duplicated. value can be an empty string
- * Return: 1 on success, 0 on failurre
+ * create_new_node - Creates a new node.
+ * @key: The key (cannot be an empty string).
+ * @value: The value associated with the key
+ * Return: 1 on success, 0 on failure.
  */
+
 
 hash_node_t *create_new_node (const char *key, const char *value)
 {

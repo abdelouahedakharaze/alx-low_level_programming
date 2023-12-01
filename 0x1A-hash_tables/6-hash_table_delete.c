@@ -1,8 +1,9 @@
 #include "hash_tables.h"
 /**
- * hash_table_delete - deletes a hash table
- * @ht: the hash table you want to delete
+ * hash_table_delete - Deletes a hash table.
+ * @ht: The hash table to be deleted.
  */
+
 void hash_table_delete(hash_table_t *ht)
 {
 unsigned long int i;
@@ -22,9 +23,10 @@ free(ht);
 
 
 /**
- * free_hash_list - frees a hash_node_t list
- * @head: head of linked list
+ * free_hash_list - Frees a hash_node_t list.
+ * @head: The head of the linked list.
  */
+
 void free_hash_list(hash_node_t *head)
 {
 	hash_node_t *current;

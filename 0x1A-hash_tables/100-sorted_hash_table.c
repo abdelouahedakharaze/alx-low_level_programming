@@ -140,12 +140,13 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 }
 
 /**
- * shash_table_get - retrieve a value from the hash table
- * @ht: hash table
- * @key: key to the data
+ * shash_table_get - Retrieve a value from the hash table.
+ * @ht: The hash table.
+ * @key: The key to the data.
  *
- * Return: the value associated with key, or NULL on failure
+ * Return: The value associated with the key, or NULL on failure.
  */
+
 char *shash_table_get(const shash_table_t *ht, const char *key)
 {
 	unsigned long int index;

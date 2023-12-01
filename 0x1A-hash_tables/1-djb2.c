@@ -1,9 +1,10 @@
 /**
- * hash_djb2 - implementation of the djb2 algorithm
- * @str: string used to generate hash value
+ * hash_djb2 - Implementation of the djb2 algorithm.
+ * @str: The string used to generate the hash value.
  *
- * Return: hash value
+ * Return: The hash value.
  */
+
 unsigned long int hash_djb2(const unsigned char *str)
 {
 	unsigned long int hash;

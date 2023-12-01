@@ -1,11 +1,12 @@
 #include "hash_tables.h"
 
 /**
- * shash_table_print_rev - prints a sorted hash table in reverse
- * @ht: hash table to print
+ * shash_table_print_rev - Prints a reversed sorted hash table.
+ * @ht: The hash table to be printed.
  *
  * Return: void
  */
+
 
 void shash_table_print_rev(const shash_table_t *ht)
 {
@@ -28,11 +29,12 @@ void shash_table_print_rev(const shash_table_t *ht)
 }
 
 /**
- * shash_table_delete - deletes a sorted hash table
- * @ht: hash table to delete
+ * shash_table_delete - Deletes a sorted hash table.
+ * @ht: The hash table to be deleted.
  *
  * Return: void
  */
+
 void shash_table_delete(shash_table_t *ht)
 {
 	unsigned long int i;
@@ -59,11 +61,12 @@ void shash_table_delete(shash_table_t *ht)
 }
 
 /**
- * shash_table_print - prints a sorted hash table
- * @ht: hash table to print
+ * shash_table_print - Prints a sorted hash table.
+ * @ht: The hash table to be printed.
  *
  * Return: void
  */
+
 void shash_table_print(const shash_table_t *ht)
 {
 	shash_node_t *tmp;
